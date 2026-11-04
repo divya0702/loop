@@ -11,8 +11,10 @@ Your World* theme).
 
 ## Live demo
 
-- App: *(add your GitHub Pages URL after deploying)*
-- Video: *(add your 3-minute demo link)*
+- **Live app:** https://divya0702.github.io/loop/#
+- **Demo video (3 min):** https://youtu.be/Lzml8PeXlhA
+
+To try it: sign up with any email and password. Email confirmation is turned off, so your account works instantly.
 
 ## How it works
 
