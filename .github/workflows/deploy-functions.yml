@@ -1,0 +1,32 @@
+name: Deploy edge functions
+
+# Fallback deploy path: runs `supabase functions deploy` from GitHub's network
+# instead of your laptop. Triggers when function code changes, or manually.
+#
+# One-time setup: repo Settings → Secrets and variables → Actions → New secret:
+#   SUPABASE_ACCESS_TOKEN = token from https://supabase.com/account/tokens
+# (MODEL_API_KEY must already be set on the project via dashboard
+#  Project Settings → Edge Functions → Secrets.)
+
+on:
+  push:
+    branches: [main]
+    paths: ['supabase/functions/**']
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_REF: qehdgjxdzqqrslyasnnz
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - run: supabase functions deploy generate-plan --project-ref "$SUPABASE_PROJECT_REF"
+
+      - run: supabase functions deploy coach --project-ref "$SUPABASE_PROJECT_REF"

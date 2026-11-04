@@ -1,0 +1,28 @@
+# Deps & build
+node_modules
+dist
+dist-ssr
+
+# Secrets — never commit real keys
+.env
+.env.local
+*.local
+
+# Supabase
+supabase/.env
+supabase/.temp
+
+# Personal uploads stay out of the repo
+*.mht
+*.mhtml
+
+# Demo recording script: kept locally for recording, not published
+DEMO.md
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.sw?
