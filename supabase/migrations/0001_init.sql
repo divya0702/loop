@@ -40,15 +40,19 @@ alter table materials enable row level security;
 alter table plans enable row level security;
 alter table sessions enable row level security;
 
+drop policy if exists "profiles_own" on profiles;
 create policy "profiles_own" on profiles
   for all using (auth.uid() = id) with check (auth.uid() = id);
 
+drop policy if exists "materials_own" on materials;
 create policy "materials_own" on materials
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
+drop policy if exists "plans_own" on plans;
 create policy "plans_own" on plans
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
+drop policy if exists "sessions_own" on sessions;
 create policy "sessions_own" on sessions
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 

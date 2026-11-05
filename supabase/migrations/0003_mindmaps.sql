@@ -11,6 +11,7 @@ create table if not exists mindmaps (
 
 alter table mindmaps enable row level security;
 
+drop policy if exists "mindmaps_own" on mindmaps;
 create policy "mindmaps_own" on mindmaps
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 

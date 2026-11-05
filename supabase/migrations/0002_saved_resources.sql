@@ -15,6 +15,7 @@ create table if not exists saved_resources (
 
 alter table saved_resources enable row level security;
 
+drop policy if exists "saved_resources_own" on saved_resources;
 create policy "saved_resources_own" on saved_resources
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
